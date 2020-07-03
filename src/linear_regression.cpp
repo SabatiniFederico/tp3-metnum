@@ -12,10 +12,11 @@ LinearRegression::LinearRegression() {
 
 void LinearRegression::fit(Matrix X, Matrix y) {
 
-	//Asumo X son la matriz de variables
-	//Asumo Y es un vector de precios.
-	//Disclaimer: Recordar que esto solo funciona para variables númericas, no categoricas (titulo, descripción)
-
+	// Asumo X son la matriz de variables
+	// Asumo Y es un vector de precios.
+	// Disclaimer: Recordar que esto solo funciona para variables númericas, 
+	// no categoricas (titulo, descripción)
+	
 	Matrix Xt = X.transpose();
 
 	Matrix newX = Xt * X;
@@ -23,7 +24,11 @@ void LinearRegression::fit(Matrix X, Matrix y) {
 
 	_res = newX.ldlt().solve(newY);
 	
+}
 
+Matrix LinearRegression::coef()
+{
+	return _res;
 }
 
 Matrix LinearRegression::predict(Matrix X)
